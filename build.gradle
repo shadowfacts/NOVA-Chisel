@@ -1,0 +1,41 @@
+plugins {
+	id "java"
+	id "idea"
+	id "nova.gradle" version "0.1.3"
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'http://maven.novaapi.net/'
+	}
+	maven {
+		url 'http://maven.shadowfacts.net/'
+	}
+}
+
+dependencies {
+	compile "nova.core:NovaCore:0.1.0-SNAPSHOT"
+}
+
+nova {
+	wrappers {
+		"17" {
+			wrapper = "nova.wrapper.mc1710:NovaWrapper-MC1.7.10:0.1-SNAPSHOT"
+		}
+		"18" {
+			wrapper = "nova.wrapper.mc18:NovaWrapper-MC1.8:0.1-SNAPSHOT"
+		}
+	}
+}
+
+compileJava {
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+}
+
+idea {
+	project {
+		languageLevel = "1.8"
+	}
+}
